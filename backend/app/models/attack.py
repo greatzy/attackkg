@@ -13,7 +13,7 @@ class Tactic(BaseModel):
     version = db.Column(db.String(20))
     
     # Relationships
-    techniques = db.relationship('Technique', backref='tactic', lazy='dynamic')
+    techniques = db.relationship('Technique', back_populates='tactic', lazy='dynamic')
     
     def __repr__(self):
         return f'<Tactic {self.tactic_id}: {self.name}>'
@@ -43,8 +43,8 @@ class Technique(BaseModel):
     
     # Relationships
     subtechniques = db.relationship('SubTechnique', backref='parent_technique', lazy='dynamic')
-    mitigations = db.relationship('Mitigation', secondary='technique_mitigations', backref='techniques')
-    tactic = db.relationship('Tactic', backref='techniques')
+    mitigations = db.relationship('Mitigation', secondary='technique_mitigations', back_populates='techniques')
+    tactic = db.relationship('Tactic', back_populates='techniques')
     
     def __repr__(self):
         return f'<Technique {self.technique_id}: {self.name}>'
@@ -89,6 +89,9 @@ class Mitigation(BaseModel):
     description = db.Column(db.Text)
     url = db.Column(db.String(500))
     version = db.Column(db.String(20))
+    
+    # Relationship
+    techniques = db.relationship('Technique', secondary='technique_mitigations', back_populates='mitigations')
     
     def __repr__(self):
         return f'<Mitigation {self.mitigation_id}: {self.name}>'

@@ -38,7 +38,7 @@ def get_tactics():
     per_page = request.args.get('per_page', 20, type=int)
     search = request.args.get('search', '')
     
-    query = Tactic.query.options(selectinload(Tactic.techniques))
+    query = Tactic.query
     
     if search:
         search_pattern = f'%{search}%'
@@ -106,10 +106,7 @@ def get_techniques():
     tactic_id = request.args.get('tactic_id')
     platform = request.args.get('platform')
     
-    query = Technique.query.filter_by(is_subtechnique=False).options(
-        selectinload(Technique.tactic),
-        selectinload(Technique.subtechniques)
-    )
+    query = Technique.query.filter_by(is_subtechnique=False)
     
     if search:
         search_pattern = f'%{search}%'

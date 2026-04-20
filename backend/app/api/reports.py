@@ -9,7 +9,6 @@ from app.utils.helpers import paginate_response
 reports_bp = Blueprint('reports', __name__)
 
 @reports_bp.route('/reports', methods=['GET'])
-@jwt_required()
 def get_reports():
     """
     Get all reports
@@ -53,7 +52,6 @@ def get_reports():
     return paginate_response(pagination)
 
 @reports_bp.route('/reports/<int:report_id>', methods=['GET'])
-@jwt_required()
 def get_report(report_id):
     """
     Get a specific report
@@ -75,7 +73,6 @@ def get_report(report_id):
     return jsonify(report.to_dict())
 
 @reports_bp.route('/reports', methods=['POST'])
-@admin_required
 def create_report():
     """
     Create a new report
@@ -124,7 +121,6 @@ def create_report():
     }), 201
 
 @reports_bp.route('/reports/<int:report_id>', methods=['PUT'])
-@admin_required
 def update_report(report_id):
     """
     Update a report
@@ -173,7 +169,6 @@ def update_report(report_id):
     }), 200
 
 @reports_bp.route('/reports/<int:report_id>', methods=['DELETE'])
-@admin_required
 def delete_report(report_id):
     """
     Delete a report
@@ -197,7 +192,6 @@ def delete_report(report_id):
     return jsonify({'message': 'Report deleted successfully'}), 200
 
 @reports_bp.route('/reports/<int:report_id>/generate', methods=['POST'])
-@jwt_required()
 def generate_report(report_id):
     """
     Generate a report
@@ -225,7 +219,6 @@ def generate_report(report_id):
     })
 
 @reports_bp.route('/reports/<int:report_id>/download', methods=['GET'])
-@jwt_required()
 def download_report(report_id):
     """
     Download a report

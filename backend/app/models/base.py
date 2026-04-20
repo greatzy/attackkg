@@ -51,7 +51,7 @@ class BaseModel(db.Model):
         
         return query.paginate(page=page, per_page=per_page, error_out=False)
     
-    def to_dict(self):
+    def to_dict(self, include_counts=False, **kwargs):
         """Convert model to dictionary"""
         result = {}
         for column in self.__table__.columns:

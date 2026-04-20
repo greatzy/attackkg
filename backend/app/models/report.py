@@ -35,8 +35,8 @@ class Report(BaseModel):
     def __repr__(self):
         return f'<Report {self.id}: {self.title}>'
     
-    def to_dict(self):
-        data = super().to_dict()
+    def to_dict(self, include_counts=False, **kwargs):
+        data = super().to_dict(include_counts=include_counts, **kwargs)
         data['creator_name'] = self.creator.username if self.creator else None
-        data['download_url'] = f'/api/v1/reports/{self.id}/download' if self.status == 'completed' else None
+        data['download_url'] = f'/api/reports/{self.id}/download' if self.status == 'completed' else None
         return data
