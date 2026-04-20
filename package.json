@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "axios": "^1.13.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

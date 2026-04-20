@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp/
+.pnp.js
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.DS_Store
+
+# Backend
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+test_*.py
+capture_*.py
+
+# Temporary files
+*.tmp
+*.temp
+test_connection.html
+test_echarts.html
+
+# Markdown to PDF
+md2pdf/
+
+# Special files
+capture_login_page.py
+capture_screenshots.py
+capture_real_screenshots.py
+capture_system_screenshots.py
+selenium_screenshot.py
+simple_screenshot.py
+使用手册.md
+测试报告.md
